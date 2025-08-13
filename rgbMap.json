@@ -1,0 +1,79 @@
+{
+  "biscuit_quality_control_system": {
+    "rgb_conversion": {
+      "input_format": "RGB"
+    },
+    "classifications": {
+      "good_biscuit": {
+        "channel_1": {
+          "min_threshold": 149.000,
+          "max_threshold": 255.000
+        },
+        "channel_2": {
+          "min_threshold": 111.000,
+          "max_threshold": 255.000
+        },
+        "channel_3": {
+          "min_threshold": 38.000,
+          "max_threshold": 255.000
+        },
+        "quality_status": "acceptable",
+        "action": "approve_for_packaging"
+      },
+      "underburned_biscuit": {
+        "channel_1": {
+          "min_threshold": 183.000,
+          "max_threshold": 255.000
+        },
+        "channel_2": {
+          "min_threshold": 149.000,
+          "max_threshold": 255.000
+        },
+        "channel_3": {
+          "min_threshold": 37.000,
+          "max_threshold": 255.000
+        },
+        "quality_status": "defective",
+        "action": "reject_pale_product"
+      },
+      "unburned_biscuit": {
+        "channel_1": {
+          "min_threshold": 126.000,
+          "max_threshold": 255.000
+        },
+        "channel_2": {
+          "min_threshold": 235.000,
+          "max_threshold": 255.000
+        },
+        "channel_3": {
+          "min_threshold": 224.000,
+          "max_threshold": 255.000
+        },
+        "quality_status": "critical_defect",
+        "action": "immediate_rejection_raw_dough"
+      },
+      "overburned_biscuit": {
+        "channel_1": {
+          "min_threshold": 80.000,
+          "max_threshold": 137.000
+        },
+        "channel_2": {
+          "min_threshold": 90.000,
+          "max_threshold": 139.000
+        },
+        "channel_3": {
+          "min_threshold": 89.000,
+          "max_threshold": 117.000
+        },
+        "quality_status": "critical_defect",
+        "action": "immediate_rejection_burnt_product"
+      }
+    },
+    "processing_algorithm": "histogram_based_rgb_thresholding",
+    "quality_grades": {
+      "acceptable": ["good_biscuit"],
+      "defective": ["underburned_biscuit"],
+      "critical_defects": ["unburned_biscuit", "overburned_biscuit"]
+    }
+  }
+}
